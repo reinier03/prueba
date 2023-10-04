@@ -1,6 +1,6 @@
 import telebot
 
-bot=telebot.TeleBot("6685078171:AAErSR82jBZkpLfgFX4Y7nbEeZ6sYjs7AO8")
+bot=telebot.TeleBot("5818205719:AAEZi7hnMVhv-8wn-p09nTdN18cjFS3pYy0")
 
 @bot.message_handler(commands=["start"])
 def cmd_star(message):
