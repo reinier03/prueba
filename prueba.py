@@ -2,7 +2,7 @@ import telebot
 import os
 
 
-bot=telebot.TeleBot(os.environ["token"])
+bot=telebot.TeleBot(os.getenv("API_KEY"))
 
 @bot.message_handler(commands=["start"])
 def cmd_star(message):
