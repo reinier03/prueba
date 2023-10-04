@@ -1,6 +1,8 @@
 import telebot
+import os
 
-bot=telebot.TeleBot("5818205719:AAEZi7hnMVhv-8wn-p09nTdN18cjFS3pYy0")
+
+bot=telebot.TeleBot(os.getenv(token))
 
 @bot.message_handler(commands=["start"])
 def cmd_star(message):
