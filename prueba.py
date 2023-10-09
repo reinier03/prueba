@@ -26,4 +26,4 @@ def cmd_recibir_mensajes(message):
 bot.remove_webhook
 time.sleep(1)
 bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-serve(web_server, host="35.160.120.126", port=80)
+serve(web_server, host="0.0.0.0", port=80)
