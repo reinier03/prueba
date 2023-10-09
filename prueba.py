@@ -21,6 +21,8 @@ def cmd_star(message):
 @bot.message_handler(func=lambda x: True)
 def cmd_recibir_mensajes(message):
     bot.send_message(message.chat.id, "El bot funciona")
+
+bot.send_message(1413725506, "Estoy online :D")
     
 
 bot.remove_webhook
