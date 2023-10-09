@@ -11,12 +11,6 @@ bot.set_my_commands([
     telebot.types.BotCommand("/start", "Da la bienvenida, o algo así")
 ])
 
-@web_server.route("/", methods=["POST"])
-def webhook():
-    update = telebot.types.Update.de_json(request.get_json(force=True))
-    bot.process_new_updates([update])
-    return "OK", 200
-
 
 @bot.message_handler(commands=["start"])
 def cmd_star(message):
@@ -27,6 +21,12 @@ def cmd_recibir_mensajes(message):
     bot.send_message(message.chat.id, "El bot funciona")
 
 bot.send_message(1413725506, "Estoy online :D")
+
+@web_server.route("/", methods=["POST"])
+def webhook():
+    update = telebot.types.Update.de_json(request.get_json(force=True))
+    bot.process_new_updates([update])
+    return "OK", 200
     
 def iniciar_webhook():
     bot.remove_webhook
@@ -35,3 +35,4 @@ def iniciar_webhook():
     serve(web_server, host="0.0.0.0", port=80)
 
 iniciar_webhook()
+
