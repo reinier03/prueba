@@ -9,8 +9,7 @@ web_server= Flask(__name__)
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "aplication/json":
-        update=telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
+        update = telebot.types.Update.de_json(request.get_json(force=True))
         bot.process_new_updates([update])
         return "OK", 200
 
@@ -27,4 +26,4 @@ def cmd_recibir_mensajes(message):
 bot.remove_webhook
 time.sleep(1)
 bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-serve(web_server, host="35.160.120.126", port=5000)
+serve(web_server, host="35.160.120.126", port=80)
