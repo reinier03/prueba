@@ -7,10 +7,6 @@ import time
 bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
 web_server= Flask(__name__)
 
-bot.set_my_commands([
-    telebot.types.BotCommand("/start", "Da la bienvenida, o algo así")
-])
-
 
 @bot.message_handler(commands=["start"])
 def cmd_star(message):
