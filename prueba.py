@@ -24,9 +24,10 @@ bot.send_message(1413725506, "Estoy online :D")
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    update = telebot.types.Update.de_json(request.get_json(force=True))
-    bot.process_new_updates([update])
-    return "OK", 200
+    if request.headers.get("content-type") == "aplication/json":
+        update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
+        bot.process_new_updates([update])
+        return "OK", 200
     
 def iniciar_webhook():
     bot.remove_webhook()
