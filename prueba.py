@@ -87,6 +87,8 @@ def iniciar_webhook():
     bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
     serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT', 80)))
 
-hilo_publicaciones=threading.Thread(name="publicaciones", target=hacer_publicaciones)
+
+if not os.path.isfile(f"{directorio_actual}//archivo_canales.txt") or os.path.isfile(f"{directorio_actual}\\archivo_canales.txt"):
+    hilo_publicaciones=threading.Thread(name="publicaciones", target=hacer_publicaciones)
 iniciar_webhook()
 
