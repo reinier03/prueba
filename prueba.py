@@ -8,7 +8,10 @@ import threading
 
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
-last_botonera=open(f"{directorio_actual}\Last_Botonera.jpg", "rb")
+if os.name=="nt":
+    last_botonera=open(f"{directorio_actual}\\Last_Botonera.jpg", "rb")
+else:
+    last_botonera=open(f"{directorio_actual}//Last_Botonera.jpg", "rb")
 
 bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
 web_server= Flask(__name__)
