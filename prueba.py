@@ -37,7 +37,7 @@ def iniciar_bucle():
 
                         if not bot.get_chat_member(chat_id=linea.strip(), user_id=bot.user.id).status=="administrator":
                             bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(linea.strip).username}, ID: {linea.strip()}")
-                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/mistakedelalaif"))
+                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/LastHopePosting/25366"))
                     archivo.seek(0)
                     for e,linea in enumerate(lineas, start=0):
                         last_botonera.seek(0)
@@ -69,7 +69,7 @@ def iniciar_bucle():
 
                         if not bot.get_chat_member(chat_id=linea.strip(), user_id=bot.user.id).status=="administrator":
                             bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(linea.strip).username}, ID: {linea.strip()}")
-                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/mistakedelalaif"))
+                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/LastHopePosting/25366"))
                     archivo.seek(0)
                     for e,linea in enumerate(lineas, start=0):
                         last_botonera.seek(0)
@@ -82,7 +82,10 @@ def iniciar_bucle():
                 bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
                 with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
                     archivo.write("-1001161864648\n")
-        time.sleep(21600)
+        tiempo=1800
+        bot.send_message(Reima, f"La botonera volverá a ser publicada a las {time.strftime('H%:M%', time.localtime(time.time()+tiempo))}")
+        bot.send_message(-1001161864648, f"La Botonera volverá a ser publicada a las {time.strftime('H%:M%', time.localtime(time.time()+tiempo))}")
+        time.sleep(tiempo)
 
 @bot.message_handler(commands=["start"])
 def cmd_start(message):
