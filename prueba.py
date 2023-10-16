@@ -7,7 +7,7 @@ import time
 import threading
 
 #-----------------------------Variables necesarias---------------------------
-bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
+bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
@@ -87,12 +87,11 @@ def iniciar_bucle():
                 bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
                 with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
                     archivo.write("-1001161864648\n")
-        bot.send_message(Reima, "ya he enviado la botonera")
         time.sleep(21600)
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "aplication/json":
+    if request.headers.get("content-type") == "application/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
@@ -104,7 +103,6 @@ def iniciar_webhook():
     serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
 
 
-print(os.environ.get("PORT"))
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
 iniciar_webhook()
