@@ -100,8 +100,11 @@ def webhook():
         return "OK", 200
     
 def iniciar_webhook():
-    bot.remove_webhook()
-    time.sleep(1)
+    try:
+        bot.remove_webhook()
+        time.sleep(1)
+    except:
+        pass
     bot.set_webhook(url="https://api.render.com/deploy/srv-ckmo2ai216ps73fl8ae0?key=-1bFLXrr_2c")
     serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
 
