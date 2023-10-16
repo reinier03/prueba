@@ -16,9 +16,6 @@ directorio_actual=os.path.dirname(os.path.abspath(__file__))
 web_server= Flask(__name__)
 
 
-bot.send_message(Reima, "Estoy online :D")
-
-
 if os.name=="nt":
     last_botonera=open(f"{directorio_actual}\\Last_Botonera.jpg", "rb")
 else:
