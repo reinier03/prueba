@@ -17,7 +17,7 @@ web_server= Flask(__name__)
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "aplication/json":
+    if request.headers.get("content-type") == "application/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
