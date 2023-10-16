@@ -103,5 +103,5 @@ def iniciar_bucle():
         bot.send_message(Reima, "ya he enviado la botonera")
         time.sleep(21600)
 
-hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
-iniciar_webhook()
+hilo_webhook=threading.Thread(name="hilo_webhook", target=iniciar_webhook)
+iniciar_bucle()
