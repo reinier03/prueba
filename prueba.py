@@ -7,7 +7,7 @@ import time
 import threading
 
 #-----------------------------Variables necesarias---------------------------
-bot=telebot.TeleBot("6685078171:AAErSR82jBZkpLfgFX4Y7nbEeZ6sYjs7AO8")
+bot=telebot.TeleBot(str(os.environ.get('TELEGRAM_TOKEN_BOT')))
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
@@ -17,7 +17,7 @@ web_server= Flask(__name__)
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "application/json":
+    if request.headers.get("content-type") == "aplication/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
