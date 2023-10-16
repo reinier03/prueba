@@ -17,7 +17,7 @@ web_server= Flask(__name__)
 
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "aplication/json":
+    if request.headers.get("content-type") == "application/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
@@ -26,7 +26,7 @@ def iniciar_webhook():
     bot.remove_webhook()
     time.sleep(1)
     bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-    serve(web_server, host="0.0.0.0", port=5000)
+    serve(web_server, host="0.0.0.0", port=os.environ.get('PORT', 5000))
 
 
 bot.send_message(Reima, "Estoy online :D")
