@@ -102,9 +102,9 @@ def iniciar_webhook():
     bot.remove_webhook()
     time.sleep(1)
     bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-    serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
+    serve(web_server, host="0.0.0.0", port=int(os.environ.get("PORT")))
 
+print(os.environ.get("PORT"))
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
-hilo_webhook=threading.Thread(name="hilo_webhook", target=iniciar_webhook)
-hilo_webhook.start()
+iniciar_webhook()
