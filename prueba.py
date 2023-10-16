@@ -93,7 +93,7 @@ def webhook():
     if request.headers.get("content-type") == "application/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
-        return "OK"
+        return "OK", 200
     
 def iniciar_webhook():
     try:
