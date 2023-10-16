@@ -15,8 +15,6 @@ else:
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
-bot.delete_webhook()
-time.sleep(1)
 
 web_server= Flask(__name__)
 
