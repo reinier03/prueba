@@ -8,7 +8,7 @@ import threading
 
 
 #-----------------------------Variables necesarias---------------------------
-bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
+bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ def webhook():
     if request.headers.get("content-type") == "application/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
-        return "OK", 200
+        return "OK"
     
 def iniciar_webhook():
     try:
