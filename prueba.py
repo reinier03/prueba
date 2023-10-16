@@ -41,8 +41,7 @@ while True:
 
                     if not bot.get_chat_member(chat_id=linea.strip(), user_id=bot.user.id).status=="administrator":
                         bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(linea.strip).username}, ID: {linea.strip()}")
-    
-                botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", url="https://t.me/mistakedelalaif"))
+                botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/mistakedelalaif"))
                 archivo.seek(0)
                 for e,linea in enumerate(lineas, start=0):
                     last_botonera.seek(0)
