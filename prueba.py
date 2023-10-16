@@ -21,7 +21,6 @@ if os.name=="nt":
 else:
     last_botonera=open(f"{directorio_actual}//Last_Botonera.jpg", "rb")
 
-bot.send_message(Reima, "Estoy Online :D")
 
 def iniciar_bucle():
     while True:
