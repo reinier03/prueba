@@ -21,12 +21,7 @@ def webhook():
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
-    
-def iniciar_webhook():
-    bot.remove_webhook()
-    time.sleep(1)
-    bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-    serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
+
 
 
 bot.send_message(Reima, "Estoy online :D")
@@ -102,6 +97,12 @@ def iniciar_bucle():
                     archivo.write("-1001161864648\n")
         bot.send_message(Reima, "ya he enviado la botonera")
         time.sleep(21600)
+
+def iniciar_webhook():
+    bot.remove_webhook()
+    time.sleep(1)
+    bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
+    serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
 
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
