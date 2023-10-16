@@ -106,4 +106,5 @@ def iniciar_webhook():
 
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
-iniciar_webhook()
+hilo_webhook=threading.Thread(name="hilo_webhook", target=iniciar_webhook)
+hilo_webhook.start()
