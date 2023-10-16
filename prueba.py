@@ -7,11 +7,11 @@ import time
 import threading
 
 
-#-----------------------------Variables necesarias---------------------------
+#-----------------------------Variables necesarias--------------------------
 bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
-#----------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 
 web_server= Flask(__name__)
 
@@ -21,7 +21,7 @@ if os.name=="nt":
 else:
     last_botonera=open(f"{directorio_actual}//Last_Botonera.jpg", "rb")
 
-
+print("a")
 def iniciar_bucle():
     while True:
         last_botonera.seek(0)
