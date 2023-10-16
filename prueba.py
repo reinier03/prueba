@@ -96,7 +96,7 @@ def webhook():
 def iniciar_webhook():
     bot.remove_webhook()
     time.sleep(1)
-    bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
+    bot.set_webhook(url="https://api.render.com/deploy/srv-ckmo2ai216ps73fl8ae0?key=-1bFLXrr_2c")
     serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
 
 
