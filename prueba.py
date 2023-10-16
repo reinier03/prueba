@@ -8,10 +8,7 @@ import threading
 
 
 #-----------------------------Variables necesarias---------------------------
-if os.environ.get("TELEGRAM_TOKEN_BOT"):
-    bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
-else:
-    bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
+bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
@@ -72,8 +69,7 @@ def iniciar_bucle():
 
                         if not bot.get_chat_member(chat_id=linea.strip(), user_id=bot.user.id).status=="administrator":
                             bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(linea.strip).username}, ID: {linea.strip()}")
-        
-                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", url="https://t.me/mistakedelalaif"))
+                    botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/mistakedelalaif"))
                     archivo.seek(0)
                     for e,linea in enumerate(lineas, start=0):
                         last_botonera.seek(0)
@@ -112,7 +108,5 @@ def iniciar_webhook():
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
 
-if not os.environ.get("TELEGRAM_TOKEN_BOT"):
-    bot.infinity_polling()
-else:
-    iniciar_webhook()
+
+iniciar_webhook()
