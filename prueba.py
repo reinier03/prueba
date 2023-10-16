@@ -28,7 +28,9 @@ def iniciar_webhook():
     serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT'),80))
 
 
+bot.send_message(Reima, "Estoy online :D")
 
+iniciar_webhook()
 
 
 if os.name=="nt":
