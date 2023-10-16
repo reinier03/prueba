@@ -15,14 +15,6 @@ directorio_actual=os.path.dirname(os.path.abspath(__file__))
 
 web_server= Flask(__name__)
 
-@web_server.route("/", methods=["POST"])
-def webhook():
-    if request.headers.get("content-type") == "aplication/json":
-        update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
-        bot.process_new_updates([update])
-        return "OK", 200
-
-
 
 bot.send_message(Reima, "Estoy online :D")
 
@@ -98,11 +90,19 @@ def iniciar_bucle():
         bot.send_message(Reima, "ya he enviado la botonera")
         time.sleep(21600)
 
+@web_server.route("/", methods=["POST"])
+def webhook():
+    if request.headers.get("content-type") == "aplication/json":
+        update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
+        bot.process_new_updates([update])
+        return "OK", 200
+    
 def iniciar_webhook():
     bot.remove_webhook()
     time.sleep(1)
     bot.set_webhook(url="https://api.render.com/deploy/srv-ckf54q6afg7c73fo3bb0?key=KJ29aU6GkhI")
-    serve(web_server, host="0.0.0.0", port=int(os.environ.get("PORT")))
+    serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT'),80))
+
 
 print(os.environ.get("PORT"))
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
