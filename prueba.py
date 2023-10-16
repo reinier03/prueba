@@ -1,10 +1,7 @@
 import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
-from flask import Flask, request
-from waitress import serve
 import time
-import threading
 
 #-----------------------------Variables necesarias---------------------------
 bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
