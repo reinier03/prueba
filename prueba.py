@@ -7,7 +7,7 @@ import time
 import threading
 
 #-----------------------------Variables necesarias---------------------------
-bot=telebot.TeleBot(str(os.environ.get('TELEGRAM_TOKEN_BOT')))
+bot=telebot.TeleBot("6685078171:AAErSR82jBZkpLfgFX4Y7nbEeZ6sYjs7AO8")
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
