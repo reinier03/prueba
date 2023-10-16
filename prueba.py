@@ -41,7 +41,8 @@ while True:
                 for e,linea in enumerate(lineas, start=0):
                     last_botonera.seek(0)
                     try:
-                        bot.send_photo(linea.strip(), last_botonera, caption="¡Si!, ¡Es eso mismo que estás pensando!\n Literalmente, <b>La Última Botonera</b> baby (☞ﾟヮﾟ)☞ ☜(ﾟヮﾟ☜)\n\n¡Oye Juan! ¿Quién hizo ese logo? ¡Quiero tatuarme eso en el c*lo!", parse_mode="html" , reply_markup=botonera)
+                        msg=bot.send_photo(linea.strip(), last_botonera, caption="¡Si!, ¡Es eso mismo que estás pensando!\n Literalmente, <b>La Última Botonera</b> baby (☞ﾟヮﾟ)☞ ☜(ﾟヮﾟ☜)\n\n¡Oye Juan! ¿Quién hizo ese logo? ¡Quiero tatuarme eso en el c*lo!", parse_mode="html" , reply_markup=botonera)
+                        bot.delete_message(linea.strip(), msg.id)
                     except:
                         continue
         #si el archivo de texto no existe    
@@ -81,6 +82,7 @@ while True:
             bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
             with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
                 archivo.write("-1001161864648\n")
+    bot.send_message(Reima, "ya he enviado la botonera")
     time.sleep(21600)
 
 
