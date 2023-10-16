@@ -15,19 +15,14 @@ directorio_actual=os.path.dirname(os.path.abspath(__file__))
 
 
 if os.name=="nt":
-    bot.send_message(Reima, "El os es Windows")
     last_botonera=open(f"{directorio_actual}\\Last_Botonera.jpg", "rb")
 else:
-    bot.send_message(Reima, "EL os es Linux/Mac")
     last_botonera=open(f"{directorio_actual}//Last_Botonera.jpg", "rb")
 
 
 
 
-bot.send_message(Reima, "Estoy online :D")
-
 while True:
-    print("He entrado en el bucle")
     last_botonera.seek(0)
     #comprobar si el so es windows
     if os.name=='nt':
@@ -51,9 +46,14 @@ while True:
                         continue
         #si el archivo de texto no existe    
         else:
-            bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
-            with open(f"{directorio_actual}\\archivo_canales.txt", "w") as archivo:
-                archivo.write("-1001161864648\n")
+            if os.name=="nt":
+                bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
+                with open(f"{directorio_actual}\\archivo_canales.txt", "w") as archivo:
+                    archivo.write("-1001161864648\n")
+            else:
+                bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
+                with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
+                    archivo.write("-1001161864648\n")
 
     #Si no se ejecuta en Windows sino que en Linux (o Mac)
     else:
@@ -81,7 +81,7 @@ while True:
             bot.send_message(Reima, "No había archivo de texto con los canales\nProcederé a crearlo")
             with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
                 archivo.write("-1001161864648\n")
-    time.sleep(60)
+    time.sleep(21600)
 
 
 
