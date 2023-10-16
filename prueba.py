@@ -6,12 +6,17 @@ import os
 import time
 import threading
 
+
 #-----------------------------Variables necesarias---------------------------
-bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
+if os.environ.get("TELEGRAM_TOKEN_BOT"):
+    bot=telebot.TeleBot(os.environ.get("TELEGRAM_TOKEN_BOT"))
+else:
+    bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #----------------------------------------------------------------------------
-
+bot.delete_webhook()
+time.sleep(1)
 
 web_server= Flask(__name__)
 
@@ -85,9 +90,13 @@ def iniciar_bucle():
                     archivo.write("-1001161864648\n")
         time.sleep(21600)
 
+@bot.message_handler(commands=["start"])
+def cmd_start(message):
+    bot.reply_to(message, "HOLA :D")
+
 @web_server.route("/", methods=["POST"])
 def webhook():
-    if request.headers.get("content-type") == "application/json":
+    if request.headers.get("content-type") == "aplication/json":
         update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
         bot.process_new_updates([update])
         return "OK", 200
@@ -101,4 +110,8 @@ def iniciar_webhook():
 
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
-iniciar_webhook()
+
+if not os.environ.get("TELEGRAM_TOKEN_BOT"):
+    bot.infinity_polling()
+else:
+    iniciar_webhook()
