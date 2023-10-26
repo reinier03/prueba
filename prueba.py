@@ -8,7 +8,11 @@ import threading
 
 
 #-----------------------------Variables necesarias--------------------------
-bot=telebot.TeleBot(os.environ.get('TELEGRAM_TOKEN_BOT'))
+if os.environ.get('TELEGRAM_TOKEN_BOT'):
+    variable_entorno=True
+    bot=telebot.TeleBot(os.environ.get('TELEGRAM_TOKEN_BOT'))
+else:
+    bot=telebot.TeleBot("5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc")
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #---------------------------------------------------------------------------
@@ -111,5 +115,7 @@ def iniciar_webhook():
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
 
-
-iniciar_webhook()
+if variable_entorno:
+    iniciar_webhook()
+else:
+    bot.polling()
