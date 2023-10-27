@@ -86,7 +86,7 @@ def iniciar_bucle():
                     archivo.write("-1001161864648\n")
         tiempo=1800
         bot.send_message(Reima, f"La botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}")
-        bot.send_message(-1001161864648, f"La Botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}")
+        bot.send_message(-1001161864648, f"La Botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}.\n\nAhora mismo son las {time.strftime('%H:%M', time.localtime(time.time()))}")
         time.sleep(tiempo)
 
 
