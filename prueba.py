@@ -1,10 +1,13 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
+import os
+from flask import Flask, request
+from waitress import serve
 
 # Definir el token del bot
-API_ID = 23104177       # Reemplaza con tu API_ID
-API_HASH = "ac8ae4a1c826c13e95936b912e2a09dd" # Reemplaza con tu API_HASH
-BOT_TOKEN= "5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc"
+API_ID = os.environ.get("API_ID")       # Reemplaza con tu API_ID
+API_HASH = os.environ.get("API_HASH") # Reemplaza con tu API_HASH
+BOT_TOKEN= os.environ.get("TELEGRAM_TOKEN_BOT")
 
 # Crear una instancia del cliente Pyrogram
 bot = Client("@LastHopePrueba_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
@@ -13,4 +16,18 @@ bot = Client("@LastHopePrueba_bot", api_id=API_ID, api_hash=API_HASH, bot_token=
 def cmd_start(bot, message):
     bot.send_message(message.chat.id, "Hola :D")
 
-bot.run()
+@webhook_app.route("/", methods=["POST"])
+def webhook():
+    update = request.get_json()
+    bot.process_update(update)
+    return "OK"
+
+def iniciar_webhook():
+    bot.set_webhook(url=os.environ.get("URL"))
+    serve(web_server, host="0.0.0.0", port=int(os.environ.get('PORT')))
+
+
+iniciar_webhook()
+
+
+
