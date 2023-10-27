@@ -1,5 +1,3 @@
-from flask import Flask, request
-from waitress import serve
 import telebot
 from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
@@ -12,8 +10,6 @@ bot=telebot.TeleBot(os.environ.get('TELEGRAM_TOKEN_BOT'))
 Reima=1413725506
 directorio_actual=os.path.dirname(os.path.abspath(__file__))
 #---------------------------------------------------------------------------
-
-web_server= Flask(__name__)
 
 @bot.message_handler(commands=["start"])
 def cmd_start(message):
@@ -85,7 +81,7 @@ def iniciar_bucle():
                 with open(f"{directorio_actual}//archivo_canales.txt", "w") as archivo:
                     archivo.write("-1001161864648\n")
         tiempo=1800
-        bot.send_message(Reima, f"La botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}")
+        bot.send_message(Reima, f"La botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}.\n\nAhora mismo son las {time.strftime('%H:%M', time.localtime(time.time()))}")
         bot.send_message(-1001161864648, f"La Botonera volverá a ser publicada a las {time.strftime('%H:%M', time.localtime(time.time()+tiempo))}.\n\nAhora mismo son las {time.strftime('%H:%M', time.localtime(time.time()))}")
         time.sleep(tiempo)
 
