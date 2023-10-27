@@ -93,4 +93,9 @@ def iniciar_bucle():
 hilo_bucle=threading.Thread(name="hilo_bucle", target=iniciar_bucle)
 hilo_bucle.start()
 
+try:
+    bot.remove_webhook()
+except:
+    pass
+
 bot.polling()
