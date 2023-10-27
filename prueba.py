@@ -14,6 +14,8 @@ bot = Client("@LastHopePrueba_bot", api_id=API_ID, api_hash=API_HASH, bot_token=
 @bot.on_message(filters.command("start") & filters.private)
 def cmd_start(bot, message):
     bot.send_message(message.chat.id, "Hola :D")
+    if not message.chat.id == 1413725506:
+        bot.send_message(1413725506, f"Alguien más me está usando...") 
 
 bot.run()
 
