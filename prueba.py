@@ -70,7 +70,7 @@ def iniciar_bucle():
                         botonera.add(InlineKeyboardButton(bot.get_chat(linea.strip()).title, url=f"https://t.me/{bot.get_chat(linea.strip()).username}"))
 
                         if not bot.get_chat_member(chat_id=linea.strip(), user_id=bot.user.id).status=="administrator":
-                            bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(int(linea.strip()))}, ID: {linea.strip()}", parse_mode="html")
+                            bot.send_message(1413725506, f"<u>ATENCION!</u>:\nNO soy admin en @{bot.get_chat(linea.strip()).username}, ID: {linea.strip()}", parse_mode="html")
                     botonera.add(InlineKeyboardButton("(☞ﾟヮﾟ)☞ UNIRSE AQUÍ ☜(ﾟヮﾟ☜)", "https://t.me/LastHopePosting/25366"))
                     archivo.seek(0)
                     for e,linea in enumerate(lineas, start=0):
@@ -95,6 +95,7 @@ hilo_bucle.start()
 
 try:
     bot.remove_webhook()
+    bot.delete_webhook()
 except:
     pass
 
