@@ -3,10 +3,9 @@ from pyrogram.types import Message
 import os
 
 
-
-API_ID = os.environ.get("API_ID")       
-API_HASH = os.environ.get("API_HASH") 
-BOT_TOKEN= os.environ.get("TELEGRAM_TOKEN_BOT")
+API_HASH = "ac8ae4a1c826c13e95936b912e2a09dd"
+API_ID = 23104177
+BOT_TOKEN = "5818205719:AAHk-liE0DD4S5ltg-kFN88Ckn4CTBUmMNc"
 
 # Crear una instancia del cliente Pyrogram
 bot = Client("@LastHopePrueba_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
